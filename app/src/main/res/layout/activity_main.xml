@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_collection"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            tools:listitem="@layout/single_collection_data">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <com.leo.simplearcloader.SimpleArcLoader
+            android:id="@+id/loader"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:visibility="gone"
+            app:arc_margin="3dp"
+            app:arc_style="simple_arc"
+            app:arc_speed="medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.leo.simplearcloader.SimpleArcLoader>
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+</LinearLayout>
