@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -49,20 +50,38 @@ public class collection_adapter extends RecyclerView.Adapter<collection_adapter.
    public class HeroViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView text_userId;
-        TextView text_id;
-        TextView text_title;
-        TextView text_body;
+       TextView text_userId;
+       TextView text_id;
+       TextView text_title;
+       TextView text_body;
 
-        public HeroViewHolder(View itemView) {
-            super(itemView);
-            text_userId = itemView.findViewById(R.id.txt_userid);
-            text_id = itemView.findViewById(R.id.txt_id);
-            text_title = itemView.findViewById(R.id.txt_title);
-            text_body = itemView.findViewById(R.id.txt_body);
-        }
-    }
+       public HeroViewHolder(View itemView) {
+           super(itemView);
+           text_userId = itemView.findViewById(R.id.txt_userid);
+           text_id = itemView.findViewById(R.id.txt_id);
+           text_title = itemView.findViewById(R.id.txt_title);
+           text_body = itemView.findViewById(R.id.txt_body);
 
+/*
+           itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+               @Override
+               public void onFocusChange(View v, boolean hasFocus) {
+                   if (hasFocus) {
+                       // run scale animation and make it bigger
+
+                       ViewCompat.setElevation(itemView, 1);
+                   } else {
+                       // run scale animation and make it smaller
+
+                       ViewCompat.setElevation(itemView, 0);
+                   }
+               }
+           });*/
+       }
+
+
+
+   }
 }
 
 

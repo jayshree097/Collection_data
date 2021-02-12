@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private ArrayList<collectionModel> heroList;
+    private ArrayList<collectionModel> heroList=new ArrayList<collectionModel>();
 
 //    ArrayList<HashMap<String, String>> itemList;
 //    List<HashMap<String, String>> itemList = new ArrayList<HashMap<String, String>>();
@@ -79,7 +80,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        onSetRecyclerView();
     }
 
+    private void onSetRecyclerView() {
+        recyclerView = findViewById(R.id.recy_collection);
+        CenterZoomLayoutManager layoutManager =
+                new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        // Scroll to the position we want to snap to
+        layoutManager.scrollToPosition(heroList.size() /4);
+        // Wait until the RecyclerView is laid out.
+        recyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                // Shift the view to snap  near the center of the screen.
+                // This does not have to be precise.
+               /* int dx = (recyclerView.getWidth()
+                        - recyclerView.getChildAt(0).getWidth()
+                        - recyclerView.getChildAt(1).getWidth()
+                        - recyclerView.getChildAt(2).getWidth()
+                        - recyclerView.getChildAt(3).getWidth()) / 4;
+                recyclerView.scrollBy(-dx, 0);
+*/
+              /*  int dx = (recyclerView.getWidth() - recyclerView.getChildAt(0).getWidth());
+                recyclerView.scrollBy(-dx, 0);*/
+                // Assign the LinearSnapHelper that will initially snap the near-center view.
+                LinearSnapHelper snapHelper = new LinearSnapHelper();
+                snapHelper.attachToRecyclerView(recyclerView);
+            }
+        });
+    }
 }
